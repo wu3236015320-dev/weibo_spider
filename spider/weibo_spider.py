@@ -186,8 +186,15 @@ class WeiboSpider:
                             
                             content = ""
                             try:
-                                content_elem = item.find_element(By.CSS_SELECTOR, "p.txt[node-type='feed_list_content']")
-                                content = content_elem.text
+                                # 优先尝试获取完整内容（node-type="feed_list_content_full"）
+                                # 这是展开后的完整文本，默认隐藏
+                                try:
+                                    content_elem = item.find_element(By.CSS_SELECTOR, "p.txt[node-type='feed_list_content_full']")
+                                    content = content_elem.text
+                                except:
+                                    # 如果没有完整内容，获取显示部分（node-type="feed_list_content"）
+                                    content_elem = item.find_element(By.CSS_SELECTOR, "p.txt[node-type='feed_list_content']")
+                                    content = content_elem.text
                             except:
                                 pass
                             
