@@ -107,7 +107,7 @@ class CrawlDialog(QDialog):
         self.end_page_spin.setValue(5)
         
         self.min_delay_spin = QSpinBox()
-        self.min_delay_spin.setMinimum(10)
+        self.min_delay_spin.setMinimum(3)
         self.min_delay_spin.setMaximum(600)
         self.min_delay_spin.setValue(60)
         self.min_delay_spin.setSuffix(" 秒")
